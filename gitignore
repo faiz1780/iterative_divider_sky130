@@ -1,0 +1,21 @@
+# Build artifacts
+*.vcd
+*.log
+*.out
+*.db
+*.lef
+*.def
+*.gds
+*.spice
+*.spef
+
+# OpenLane runs
+openlane/runs/
+
+# Reports (optional – keep later if you want)
+# reports/
+
+# Editor / OS
+*.swp
+*~
+.DS_Store
