@@ -10,3 +10,10 @@ with a focus on:
 - Post-CTS timing effects
 
 **Status:** Work in progress
+
+## Week 1 Status
+- Iterative 32-bit unsigned divider
+- Restoring division algorithm
+- Clear control–datapath separation
+- Fixed latency (32 cycles, 1 bit per cycle)
+- Verified using SystemVerilog testbench (Icarus Verilog)
