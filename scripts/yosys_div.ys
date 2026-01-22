@@ -1,0 +1,13 @@
+read_verilog -sv rtl/*.v
+hierarchy -check -top div_iterative
+proc 
+opt
+fsm
+opt
+memory
+opt
+techmap 
+opt
+abc -g AND,OR,XOR,MUX
+stat
+

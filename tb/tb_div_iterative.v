@@ -2,21 +2,23 @@
 
 module tb_div_iterative;
 
+    // clock & reset
     logic clk;
     logic rst_n;
 
+    // handshake
     logic valid_in;
     logic ready_out;
-
-    logic [31:0] dividend;
-    logic [31:0] divisor;
-
     logic valid_out;
     logic ready_in;
 
+    // data
+    logic [31:0] dividend;
+    logic [31:0] divisor;
     logic [31:0] quotient;
     logic [31:0] remainder;
 
+    // DUT
     div_iterative dut (
         .clk       (clk),
         .rst_n     (rst_n),
@@ -30,10 +32,16 @@ module tb_div_iterative;
         .remainder (remainder)
     );
 
-    // clock: 10ns period
+    // clock generation: 10 ns period
     always #5 clk = ~clk;
 
+    // main stimulus + dump
     initial begin
+        // waveform dump
+        $dumpfile("div.vcd");
+        $dumpvars(0, tb_div_iterative);
+
+        // initialize
         clk = 0;
         rst_n = 0;
         valid_in = 0;
@@ -41,10 +49,11 @@ module tb_div_iterative;
         dividend = 0;
         divisor  = 0;
 
+        // reset
         #20;
         rst_n = 1;
 
-        // Test case: 13 / 3
+        // apply input: 13 / 3
         @(posedge clk);
         dividend = 32'd13;
         divisor  = 32'd3;
@@ -56,9 +65,9 @@ module tb_div_iterative;
         // wait for result
         wait (valid_out);
         @(posedge clk);
-     $display("Quotient = %0d, Remainder = %0d", quotient, remainder);
+        $display("Quotient = %0d, Remainder = %0d", quotient, remainder);
 
-
+        // end simulation
         #20;
         $finish;
     end

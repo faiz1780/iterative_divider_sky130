@@ -17,3 +17,10 @@ with a focus on:
 - Clear control–datapath separation
 - Fixed latency (32 cycles, 1 bit per cycle)
 - Verified using SystemVerilog testbench (Icarus Verilog)
+
+
+## Week 2 Status
+- Waveform-level verification using GTKWave
+- RTL hygiene review (reset, latch safety)
+- Technology-independent synthesis using Yosys
+- Critical path identified in datapath (subtract–compare–mux)
